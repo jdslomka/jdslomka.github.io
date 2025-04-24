@@ -2,14 +2,48 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="refresh" content="0; url=https://johnslomka.com" />
-    <title>Redirecting...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Uncomment the line below for a fallback redirect if JavaScript is disabled -->
+    <!-- <meta http-equiv="refresh" content="5; url=https://johnslomka.com" /> -->
+    <title>Page Moved</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <p>
-      This site has moved to
-      <a href="https://johnslomka.com">johnslomka.com</a>. If you are not
-      redirected automatically, please click the link.
-    </p>
+    <div
+      class="flex flex-col items-center justify-center min-h-screen px-8 bg-zinc-100"
+    >
+      <h1
+        class="text-3xl font-bold text-gray-800 mb-4 text-center sm:text-left"
+      >
+        My page has been moved
+      </h1>
+      <p id="countdown" class="text-gray-800 mb-4 text-center sm:text-left"></p>
+      <p class="text-gray-600 mb-6 text-center sm:text-left">
+        If you are not redirected automatically, click the button below.
+      </p>
+      <a
+        href="https://johnslomka.com"
+        class="hover:bg-yellow-500 bg-gray-500 text-white font-bold py-2 px-6 rounded-lg transition duration-200"
+      >
+        Visit new page
+      </a>
+    </div>
+    <script>
+      const countdownElement = document.getElementById("countdown");
+      let seconds = 5;
+      countdownElement.textContent = `Redirecting in ${seconds} seconds...`;
+      const interval = setInterval(() => {
+        seconds--;
+        if (seconds >= 0) {
+          countdownElement.textContent = `Redirecting in ${seconds} seconds...`;
+        } else {
+          clearInterval(interval);
+          window.location.href = "https://johnslomka.com";
+        }
+      }, 1000);
+    </script>
   </body>
 </html>
